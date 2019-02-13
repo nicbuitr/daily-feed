@@ -1,0 +1,35 @@
+{
+  "name": "daily-feed",
+  "description": "Web application that provides a daily feed.",
+  "author": "Nicolás Buitrago Castaño (nicbuitr)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicbuitr/daily-feed.git"
+  },
+  "main": "index.jsx",
+  "scripts": {
+    "start": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --out-dir docs --public-url ./"
+  },
+  "keywords": [],
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "parcel-bundler": "^1.10.3",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "styled-components": "^4.1.3",
+    "transform-runtime": "0.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.4.7",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "sass": "^1.17.0"
+  }
+}
