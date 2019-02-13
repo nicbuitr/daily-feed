@@ -65,7 +65,7 @@ Once its deployed go to http://localhost:1234/
 
 ### Fetch requests to the following APIs:
 
-- [Aztro API - Horoscope](https://github.com/sameerkumar18/aztro)
+- [Aztro API - Horoscope](https://aztro.readthedocs.io/)
 - [Bored API - Random Activity](https://www.boredapi.com/)
 - [Advice Slip API - Random Advice](https://api.adviceslip.com/)
 - [Official Joke API - Random Jokes](https://github.com/15Dkatz/official_joke_api)

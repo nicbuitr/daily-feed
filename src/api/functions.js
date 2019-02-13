@@ -53,7 +53,7 @@ export const callAPI = {
     return json;
   },
   getRandomActivity: async () => {
-    let resp = await fetch('http://www.boredapi.com/api/activity/');
+    let resp = await fetch('https://www.boredapi.com/api/activity/');
     let json = await resp.json();
     return json;
   },

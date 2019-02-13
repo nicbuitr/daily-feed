@@ -102,8 +102,11 @@ class App extends Component {
 
   fetchInformation(sign) {
     this.setState({ sign: sign });
-
-    callAPI.getHoroscopes(sign.toLowerCase(), 'today').then(result => {
+    let date = new Date();
+    let dayOffset = date.getDate() - date.getUTCDate();
+    let day = dayOffset === 0? 'today': dayOffset > 0?  'tomorrow': 'yesterday';
+    
+    callAPI.getHoroscopes(sign.toLowerCase(), day).then(result => {
       // callAPI.getHoroscopes(resultA.compatibility.toLowerCase(), 'today').then(resultB => {
       //   this.setState({ horoscopeB: resultB });
       //   callAPI.getConjunctAdvice(parseInt(resultA.lucky_number) + parseInt(resultB.lucky_number)).then(respC => {
