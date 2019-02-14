@@ -37,8 +37,8 @@ class ChucksJoke extends Component {
             <strong>{" " + props.character.gender}</strong>
             <strong>{" " + props.character.species}</strong> currently
             <strong>{" " + props.character.status}</strong>.<br />Native from
-            <strong>{" " + props.character.origin.name}</strong> and currently located at
-            <strong>{" " + props.character.location.name}</strong>.
+            <strong>{" " + props.character.origin}</strong> and currently located at
+            <strong>{" " + props.character.location}</strong>.
       </Typography>
         </CardContent>
       </Card>

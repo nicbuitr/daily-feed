@@ -14,19 +14,44 @@ export const callAPI = {
     };
 
     let resp = await fetch('https://aztro.sameerkumar.website/?sign=' + sign + '&day=' + day, { method: 'POST' });
-    ret.horoscopeA = await resp.json();
+    let json = await resp.json();
+    let { compatibility, description, lucky_number, mood } = json;
+    ret.horoscopeA = {
+      compatibility: compatibility,
+      description: description,
+      lucky_number: lucky_number,
+      mood: mood
+    };
+
 
     resp = await fetch('https://aztro.sameerkumar.website/?sign=' + ret.horoscopeA.compatibility + '&day=' + day, { method: 'POST' });
-    ret.horoscopeB = await resp.json();
+    json = await resp.json();
+    ({ compatibility, description, lucky_number, mood } = json);
+    ret.horoscopeB = {
+      compatibility: compatibility,
+      description: description,
+      lucky_number: lucky_number,
+      mood: mood
+    };
 
     let num = parseInt(ret.horoscopeA.lucky_number) + parseInt(ret.horoscopeB.lucky_number) - 1;
     resp = await fetch('https://api.adviceslip.com/advice/' + num);
-    let advice = await resp.json();
-    ret.conjunctAdvice = advice.slip.advice;
+    json = await resp.json();
+    ret.conjunctAdvice = json.slip.advice;
 
     try {
       resp = await fetch('https://rickandmortyapi.com/api/character/' + (parseInt(ret.horoscopeA.lucky_number) - 1));
-      ret.characterRNM = await resp.json();
+      json = await resp.json();
+      let { name, gender, image, species, status, origin: { name: oName }, location: { name: lName } } = json;
+      ret.characterRNM = {
+        name: name,
+        gender: gender,
+        image: image,
+        species: species,
+        status: status,
+        origin: oName,
+        location: lName
+      };
     } catch (err) {
       ret.characterRNM = err;
     }
@@ -43,19 +68,29 @@ export const callAPI = {
     });
   },
   getRandomJoke: async () => {
-    let json;
+    let res;
     try {
       let resp = await fetch('https://official-joke-api.appspot.com/random_joke');
-      json = await resp.json();
+      let json = await resp.json();
+      let { setup, punchline } = json;
+      res = {
+        setup: setup,
+        punchline: punchline
+      };
     } catch (err) {
-      json = err;
+      res = err;
     }
-    return json;
+    return res;
   },
   getRandomActivity: async () => {
     let resp = await fetch('https://www.boredapi.com/api/activity/');
     let json = await resp.json();
-    return json;
+    let { activity, type } = json;
+    let res = {
+      activity: activity,
+      type: type
+    };
+    return res;
   },
   getConjunctAdvice: async (id) => {
     let resp = await fetch('https://api.adviceslip.com/advice/' + id);
